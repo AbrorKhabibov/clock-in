@@ -47,6 +47,7 @@ Thumbs.db
 .vercel
 .expo/
 .expo-shared/
+*.tsbuildinfo
 
 # Database
 *.db
