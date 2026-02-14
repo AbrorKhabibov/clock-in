@@ -1,0 +1,95 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  firstName String
+  lastName  String
+  role      UserRole @default(EMPLOYEE)
+  companyId String
+  company   Company  @relation(fields: [companyId], references: [id])
+  schedules Schedule[]
+  timeLogs  TimeLog[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([companyId])
+  @@index([email])
+}
+
+enum UserRole {
+  ADMIN
+  MANAGER
+  EMPLOYEE
+}
+
+model Company {
+  id        String   @id @default(uuid())
+  name      String
+  address   String?
+  users     User[]
+  nfcTags   NFCTag[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Schedule {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  dayOfWeek Int      // 0-6 (Sunday-Saturday)
+  startTime String   // HH:mm format
+  endTime   String   // HH:mm format
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}
+
+model TimeLog {
+  id        String        @id @default(uuid())
+  userId    String
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  clockIn   DateTime
+  clockOut  DateTime?
+  nfcTagId  String?
+  nfcTag    NFCTag?       @relation(fields: [nfcTagId], references: [id])
+  status    TimeLogStatus @default(CLOCKED_IN)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  @@index([userId])
+  @@index([nfcTagId])
+  @@index([clockIn])
+}
+
+enum TimeLogStatus {
+  CLOCKED_IN
+  CLOCKED_OUT
+}
+
+model NFCTag {
+  id        String    @id @default(uuid())
+  tagId     String    @unique
+  companyId String
+  company   Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  location  String?
+  isActive  Boolean   @default(true)
+  timeLogs  TimeLog[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([companyId])
+  @@index([tagId])
+}
