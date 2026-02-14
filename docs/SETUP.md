@@ -92,6 +92,7 @@ docker-compose up -d
 ```
 
 This will start:
+
 - PostgreSQL on port 5432
 - Backend API on port 3001
 - Dashboard on port 3000

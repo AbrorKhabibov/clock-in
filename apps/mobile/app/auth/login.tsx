@@ -14,7 +14,7 @@ export default function LoginScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>Clock-In</Text>
       <Text style={styles.subtitle}>Sign in to continue</Text>
-      
+
       <TextInput
         style={styles.input}
         placeholder="Email"
@@ -23,7 +23,7 @@ export default function LoginScreen() {
         keyboardType="email-address"
         autoCapitalize="none"
       />
-      
+
       <TextInput
         style={styles.input}
         placeholder="Password"
@@ -31,7 +31,7 @@ export default function LoginScreen() {
         onChangeText={setPassword}
         secureTextEntry
       />
-      
+
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>

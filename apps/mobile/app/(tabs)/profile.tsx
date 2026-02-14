@@ -9,7 +9,7 @@ export default function ProfileScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Profile</Text>
-      
+
       <View style={styles.infoCard}>
         <Text style={styles.label}>Name</Text>
         <Text style={styles.value}>John Doe</Text>

@@ -24,9 +24,7 @@ export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome Back!</Text>
-      <Text style={styles.subtitle}>
-        Status: {isClockedIn ? 'Clocked In' : 'Clocked Out'}
-      </Text>
+      <Text style={styles.subtitle}>Status: {isClockedIn ? 'Clocked In' : 'Clocked Out'}</Text>
 
       <View style={styles.buttonContainer}>
         {!isClockedIn ? (

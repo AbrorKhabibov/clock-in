@@ -119,6 +119,7 @@ docker-compose up -d
 ```
 
 Services:
+
 - PostgreSQL: `localhost:5432`
 - Backend API: `localhost:3001`
 - Dashboard: `localhost:3000`
@@ -163,6 +164,7 @@ clock-in/
 Each app requires environment variables. Copy the `.env.example` files:
 
 ### Backend (`apps/backend/.env`)
+
 - `DATABASE_URL` - PostgreSQL connection string
 - `JWT_SECRET` - JWT secret key
 - `JWT_EXPIRES_IN` - Token expiration time
@@ -170,9 +172,11 @@ Each app requires environment variables. Copy the `.env.example` files:
 - `CORS_ORIGIN` - Allowed CORS origins
 
 ### Dashboard (`apps/dashboard/.env`)
+
 - `NEXT_PUBLIC_API_URL` - Backend API URL
 
 ### Mobile (`apps/mobile/.env`)
+
 - `EXPO_PUBLIC_API_URL` - Backend API URL
 
 ## 🧪 Testing

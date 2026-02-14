@@ -23,6 +23,7 @@ Authorization: Bearer <your-jwt-token>
 Login with email and password.
 
 **Request Body:**
+
 ```json
 {
   "email": "user@example.com",
@@ -31,6 +32,7 @@ Login with email and password.
 ```
 
 **Response:**
+
 ```json
 {
   "accessToken": "jwt-token",
@@ -133,6 +135,7 @@ Get time logs for a specific user.
 Clock in.
 
 **Request Body:**
+
 ```json
 {
   "userId": "uuid",
@@ -171,6 +174,7 @@ Get NFC tag by ID.
 Verify an NFC tag.
 
 **Request Body:**
+
 ```json
 {
   "tagId": "nfc-tag-id"

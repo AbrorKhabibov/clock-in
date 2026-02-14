@@ -52,6 +52,7 @@ pnpm dev
 ```
 
 Then press:
+
 - `i` to open iOS simulator
 - `a` to open Android emulator
 - Scan QR code with Expo Go app on your device
